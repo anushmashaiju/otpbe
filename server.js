@@ -5,8 +5,6 @@ const dotenv = require('dotenv')
 const session = require('express-session');
 const authRouter = require('./Routes/authRoutes');
 const connectDb = require('./Config/db');
-const passport = require('passport');
-const passportSetup = require('./Middleware/passport');
 const cookieParser = require ('cookie-parser');
 //const bodyParser =require ('body-parser');
 const morgan = require('morgan');
@@ -15,10 +13,8 @@ const app = express();
 
 dotenv.config();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
-//app.use(bodyParser.json()); 
-//app.use(bodyParser.urlencoded({ extended: true }));
-passportSetup(passport) //
+app.use(express.urlencoded({ extended: true })); 
+
 
 app.use(session({
   secret: 'secret',//
